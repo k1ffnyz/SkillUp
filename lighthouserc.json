@@ -1,3 +1,4 @@
+
 {
   "ci": {
     "collect": {
@@ -45,6 +46,30 @@
           "error",
           {
             "maxNumericValue": 0.1
+          }
+        ],
+        "resource-summary:total:count": [
+          "error",
+          {
+            "maxNumericValue": 30
+          }
+        ],
+        "resource-summary:script:size": [
+          "warn",
+          {
+            "maxNumericValue": 512000
+          }
+        ],
+        "resource-summary:stylesheet:size": [
+          "warn",
+          {
+            "maxNumericValue": 102400
+          }
+        ],
+        "resource-summary:image:size": [
+          "warn",
+          {
+            "maxNumericValue": 512000
           }
         ]
       }
