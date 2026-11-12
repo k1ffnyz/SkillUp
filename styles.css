@@ -1,0 +1,654 @@
+
+/* основные цвета сайта */
+:root {
+    --color-primary: #2563EB;
+    --color-secondary: #7C3AED;
+    --color-accent: #F59E0B;
+
+    --color-text: #1F2937;
+    --color-bg: #FFFFFF;
+
+    --color-card: #FFFFFF;
+    --color-border: #E5E7EB;
+
+    /* основные отступы */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 32px;
+    --space-xl: 64px;
+
+    /* скругления элементов */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-round: 999px;
+}
+
+
+/* убираю стандартные отступы браузера */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* плавная прокрутка по якорям */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* основные настройки страницы */
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--color-text);
+    background: var(--color-bg);
+    line-height: 1.6;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* изображения не выходят за пределы контейнеров */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* убираю стандартное подчёркивание ссылок */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* общая ширина содержимого */
+.container {
+    width: min(100% - 32px, 1280px);
+    margin: 0 auto;
+}
+
+
+/* выделение элементов при переходе с клавиатуры */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 4px;
+}
+
+
+/* полоска прогресса прокрутки */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 4px;
+
+    background: var(--color-accent);
+    z-index: 1000;
+
+    pointer-events: none;
+}
+
+
+/* шапка сайта */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+
+    transition: background-color 0.3s ease;
+}
+
+
+.header-container {
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+
+/* логотип */
+.logo {
+    font-family: "Manrope", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+
+    color: var(--color-primary);
+    margin-right: auto;
+}
+
+
+/* обычное меню скрыто на мобильных устройствах */
+.navigation {
+    display: none;
+}
+
+
+/* кнопка переключения темы */
+.theme-button {
+    border: 0;
+    background: transparent;
+
+    color: var(--color-text);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+/* общие настройки кнопок */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+    padding: 0 24px;
+
+    border-radius: var(--radius-md);
+    font-weight: 600;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* основная кнопка */
+.button-primary {
+    background: var(--color-accent);
+
+    /* тёмный текст лучше читается на жёлтом фоне */
+    color: #1F2937;
+}
+
+
+/* эффект при наведении */
+.button-primary:hover {
+    background: #D97706;
+    transform: translateY(-2px);
+}
+
+
+/* кнопка записи в шапке */
+.header-button {
+    display: none;
+}
+
+
+/* кнопка мобильного меню */
+.burger-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border: 0;
+    background: transparent;
+
+    font-size: 26px;
+    color: var(--color-text);
+
+    cursor: pointer;
+}
+
+
+/* открытое мобильное меню */
+.navigation.navigation-open {
+    display: flex;
+    position: absolute;
+
+    top: 72px;
+    left: 16px;
+    right: 16px;
+
+    flex-direction: column;
+    gap: 8px;
+
+    padding: 16px;
+
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* пункты открытого меню */
+.navigation.navigation-open a {
+    padding: 12px;
+}
+
+
+/* начальное состояние анимируемых блоков */
+.animated-block {
+    opacity: 0;
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+
+/* показываю блок после появления на экране */
+.animated-block.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* первый экран */
+.hero {
+    padding: 72px 0;
+}
+
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+
+.hero-content h1 {
+    font-family: "Manrope", sans-serif;
+    font-size: 39px;
+    line-height: 1.1;
+
+    margin-bottom: 24px;
+}
+
+
+.hero-content p {
+    max-width: 600px;
+    font-size: 18px;
+
+    margin-bottom: 32px;
+}
+
+
+.hero-visual {
+    background: var(--color-primary);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+
+.hero-visual img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+}
+
+
+/* общие отступы секций */
+section {
+    padding: 72px 0;
+}
+
+
+section h2 {
+    font-family: "Manrope", sans-serif;
+    font-size: 31px;
+    line-height: 1.2;
+
+    margin-bottom: 16px;
+}
+
+
+.section-description {
+    margin-bottom: 32px;
+}
+
+
+/* карточки преимуществ */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+
+.feature-card {
+    padding: 24px;
+
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+.feature-card h3 {
+    font-family: "Manrope", sans-serif;
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+
+/* этапы обучения */
+.steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+
+.step {
+    padding: 24px;
+}
+
+
+.step-number {
+    display: inline-block;
+    margin-bottom: 12px;
+
+    font-family: "Manrope", sans-serif;
+    font-size: 31px;
+    font-weight: 700;
+
+    color: var(--color-primary);
+}
+
+
+.step h3 {
+    font-family: "Manrope", sans-serif;
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+
+/* блок отзывов */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+
+.testimonial-card {
+    padding: 24px;
+
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+
+.rating {
+    margin-bottom: 16px;
+
+    color: var(--color-accent);
+    letter-spacing: 2px;
+}
+
+
+.testimonial-card p {
+    margin-bottom: 20px;
+}
+
+
+.testimonial-card h3 {
+    font-family: "Manrope", sans-serif;
+    font-size: 16px;
+}
+
+
+/* заключительный блок */
+.cta-container {
+    padding: 48px 24px;
+    text-align: center;
+
+    background: var(--color-primary);
+    color: #FFFFFF;
+
+    border-radius: var(--radius-lg);
+}
+
+
+.cta-container h2 {
+    margin-bottom: 16px;
+}
+
+
+.cta-container p {
+    max-width: 600px;
+    margin: 0 auto 24px;
+}
+
+
+/* подвал сайта */
+.footer {
+    padding: 32px 0;
+    border-top: 1px solid var(--color-border);
+}
+
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.footer p {
+    font-size: 14px;
+}
+
+
+/* адаптация под планшеты */
+@media (min-width: 768px) {
+
+    .container {
+        width: min(100% - 64px, 1280px);
+    }
+
+
+    .hero {
+        padding: 96px 0;
+    }
+
+
+    .hero-content h1 {
+        font-size: 49px;
+    }
+
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+
+    .steps {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+
+    section {
+        padding: 96px 0;
+    }
+
+
+    .cta-container {
+        padding: 64px;
+    }
+}
+
+
+/* адаптация под ноутбуки и большие экраны */
+@media (min-width: 1024px) {
+
+    .navigation {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+
+
+    .navigation a {
+        font-size: 15px;
+        transition: color 0.2s ease;
+    }
+
+
+    .navigation a:hover {
+        color: var(--color-primary);
+    }
+
+
+    .header-button {
+        display: inline-flex;
+    }
+
+
+    /* на большом экране бургер не нужен */
+    .burger-button {
+        display: none;
+    }
+
+
+    .hero-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 64px;
+    }
+
+
+    .hero-content h1 {
+        font-size: 49px;
+    }
+
+
+    .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* адаптация под широкие мониторы */
+@media (min-width: 1440px) {
+
+    .container {
+        width: min(100% - 160px, 1280px);
+    }
+
+
+    .hero {
+        padding: 120px 0;
+    }
+
+
+    .hero-content h1 {
+        font-size: 61px;
+    }
+
+
+    section h2 {
+        font-size: 39px;
+    }
+
+
+    .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+
+    .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* цвета тёмной темы */
+.dark-theme {
+    --color-text: #F9FAFB;
+    --color-bg: #111827;
+    --color-card: #1F2937;
+    --color-border: #374151;
+}
+
+
+.dark-theme .header {
+    background: var(--color-bg);
+}
+
+
+.dark-theme .hero-visual {
+    background: #1D4ED8;
+}
+
+
+.dark-theme .feature-card,
+.dark-theme .testimonial-card {
+    background: var(--color-card);
+}
+
+
+.dark-theme .theme-button,
+.dark-theme .burger-button {
+    color: var(--color-text);
+}
+
+
+/* настройки для пользователей, отключивших анимацию */
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+
+    .animated-block {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}

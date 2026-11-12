@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <!-- основные настройки страницы -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillUp — онлайн-курс по веб-разработке</title>
+    <meta name="description" content="Освой HTML, CSS и JavaScript с нуля на практическом онлайн-курсе SkillUp. Изучай веб-разработку и создавай собственные проекты.">
+    <meta name="theme-color" content="#FFFFFF">
+
+    <!-- заранее подключаю серверы со шрифтами -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- оставляю два шрифта, которые использую в дизайне -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- подключаю основные стили -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- полоска, которая показывает процент прокрутки -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- шапка сайта -->
+    <header class="header">
+        <div class="container header-container">
+
+            <a href="#hero" class="logo">SkillUp</a>
+
+            <!-- основная навигация -->
+            <nav class="navigation" id="navigation" aria-label="Основная навигация">
+                <a href="#features">Курс</a>
+                <a href="#how-it-works">Как это работает</a>
+                <a href="#testimonials">Отзывы</a>
+            </nav>
+
+            <!-- переключение светлой и тёмной темы -->
+            <button
+                class="theme-button"
+                id="theme-button"
+                type="button"
+                aria-label="Переключить цветовую тему"
+                aria-pressed="false"
+            >
+                Тёмная тема
+            </button>
+
+            <a href="#cta" class="button button-primary header-button">
+                Записаться на курс
+            </a>
+
+            <!-- мобильное меню -->
+            <button
+                class="burger-button"
+                id="burger-button"
+                type="button"
+                aria-label="Открыть меню"
+                aria-expanded="false"
+                aria-controls="navigation"
+            >
+                ☰
+            </button>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- первый экран -->
+        <section class="hero" id="hero">
+            <div class="container hero-container">
+
+                <div class="hero-content animated-block">
+                    <h1>Освой веб-разработку с нуля</h1>
+
+                    <p>
+                        Изучай HTML, CSS и JavaScript на практике
+                        и создавай современные веб-сайты.
+                    </p>
+
+                    <a href="#cta" class="button button-primary">
+                        Попробовать бесплатно
+                    </a>
+                </div>
+
+                <!-- изображение первого экрана загружаю с высоким приоритетом -->
+                <div class="hero-visual animated-block">
+                    <img
+                        src="assets/hero-illustration.png"
+                        alt="Иллюстрация интерфейса веб-сайта"
+                        fetchpriority="high"
+                        decoding="async"
+                    >
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- преимущества курса -->
+        <section class="features" id="features">
+            <div class="container animated-block">
+
+                <h2>Почему SkillUp?</h2>
+
+                <div class="features-grid">
+
+                    <article class="feature-card">
+                        <h3>HTML, CSS и JavaScript</h3>
+                        <p>
+                            Изучение основных технологий веб-разработки.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <h3>Практика</h3>
+                        <p>
+                            Закрепление знаний на реальных заданиях и проектах.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <h3>Понятное обучение</h3>
+                        <p>
+                            Последовательная программа без лишней теории.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <h3>Поддержка наставника</h3>
+                        <p>
+                            Ответы на вопросы и помощь в процессе обучения.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- этапы обучения -->
+        <section id="how-it-works">
+            <div class="container animated-block">
+
+                <h2>Как это работает?</h2>
+
+                <div class="steps">
+
+                    <article class="step">
+                        <span class="step-number">01</span>
+                        <h3>Изучение</h3>
+                        <p>
+                            Получаешь базовые знания и разбираешь основные темы.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <span class="step-number">02</span>
+                        <h3>Практика</h3>
+                        <p>
+                            Выполняешь задания и применяешь знания на практике.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <span class="step-number">03</span>
+                        <h3>Проект</h3>
+                        <p>
+                            Создаёшь собственный проект и собираешь первое портфолио.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- отзывы -->
+        <section id="testimonials">
+            <div class="container animated-block">
+
+                <h2>Что говорят участники?</h2>
+
+                <p class="section-description">
+                    Реальные отзывы тех, кто уже начал учиться.
+                </p>
+
+                <div class="testimonials-grid">
+
+                    <article class="testimonial-card">
+                        <div class="rating" aria-label="5 из 5 звёзд">★★★★★</div>
+
+                        <p>
+                            Понравилось, что всё объясняется простым языком.
+                            Уже после первых занятий смогла сделать свою страницу.
+                        </p>
+
+                        <h3>Анна К.</h3>
+                    </article>
+
+                    <article class="testimonial-card">
+                        <div class="rating" aria-label="5 из 5 звёзд">★★★★★</div>
+
+                        <p>
+                            Курс помог разобраться с основами и наконец
+                            начать делать проекты самостоятельно.
+                        </p>
+
+                        <h3>Максим Р.</h3>
+                    </article>
+
+                    <article class="testimonial-card">
+                        <div class="rating" aria-label="5 из 5 звёзд">★★★★★</div>
+
+                        <p>
+                            Удобный формат обучения и много практических заданий.
+                            Стало намного понятнее, как создавать сайты.
+                        </p>
+
+                        <h3>Елена С.</h3>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- заключительный блок -->
+        <section id="cta">
+            <div class="container cta-container animated-block">
+
+                <h2>Готов начать?</h2>
+
+                <p>
+                    Попробуй первый урок бесплатно и сделай шаг
+                    к своему первому сайту.
+                </p>
+
+                <a href="#" class="button button-primary">
+                    Записаться на курс
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- подвал -->
+    <footer class="footer">
+        <div class="container footer-container">
+
+            <p>SkillUp — онлайн-курс по веб-разработке</p>
+
+            <p>© 2026 SkillUp. Все права защищены.</p>
+
+        </div>
+    </footer>
+
+
+    <!-- скрипты сайта -->
+    <script>
+        // нахожу элементы, с которыми буду работать
+        const themeButton = document.getElementById("theme-button");
+        const burgerButton = document.getElementById("burger-button");
+        const navigation = document.getElementById("navigation");
+        const scrollProgress = document.getElementById("scroll-progress");
+
+        // проверяю сохранённую тему при открытии страницы
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark-theme");
+            themeButton.textContent = "Светлая тема";
+            themeButton.setAttribute("aria-pressed", "true");
+        }
+
+        // переключаю тему сайта
+        themeButton.addEventListener("click", function () {
+            const isDark = document.body.classList.toggle("dark-theme");
+
+            if (isDark) {
+                localStorage.setItem("theme", "dark");
+                themeButton.textContent = "Светлая тема";
+            } else {
+                localStorage.setItem("theme", "light");
+                themeButton.textContent = "Тёмная тема";
+            }
+
+            themeButton.setAttribute("aria-pressed", String(isDark));
+        });
+
+        // открываю и закрываю мобильное меню
+        burgerButton.addEventListener("click", function () {
+            const isOpen = navigation.classList.toggle("navigation-open");
+
+            burgerButton.textContent = isOpen ? "✕" : "☰";
+            burgerButton.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
+            burgerButton.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        // закрываю меню после выбора пункта
+        navigation.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navigation.classList.remove("navigation-open");
+                burgerButton.textContent = "☰";
+                burgerButton.setAttribute("aria-label", "Открыть меню");
+                burgerButton.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        // показываю блоки при прокрутке страницы
+        const animatedBlocks = document.querySelectorAll(".animated-block");
+
+        // если браузер поддерживает IntersectionObserver
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("show");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+            animatedBlocks.forEach(function (block) {
+                observer.observe(block);
+            });
+        } else {
+            // показываю блоки, если наблюдатель не поддерживается
+            animatedBlocks.forEach(function (block) {
+                block.classList.add("show");
+            });
+        }
+
+        // обновляю полоску прокрутки не чаще одного раза за кадр
+        let scrollScheduled = false;
+
+        window.addEventListener("scroll", function () {
+            if (scrollScheduled) {
+                return;
+            }
+
+            scrollScheduled = true;
+
+            window.requestAnimationFrame(function () {
+                const scrollTop = window.scrollY;
+                const pageHeight = document.documentElement.scrollHeight;
+                const windowHeight = window.innerHeight;
+                const scrollableHeight = pageHeight - windowHeight;
+
+                if (scrollableHeight > 0) {
+                    const progress = (scrollTop / scrollableHeight) * 100;
+                    scrollProgress.style.width = progress + "%";
+                } else {
+                    scrollProgress.style.width = "0%";
+                }
+
+                scrollScheduled = false;
+            });
+        }, { passive: true });
+    </script>
+
+</body>
+</html>
